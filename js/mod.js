@@ -12,13 +12,27 @@
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.1",
+	num: "0.1.5",
 	name: "",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-	<h3>v0.0</h3><br>
-
+	<h3>v0.1</h3><br>
+		- P¹ P² P³ P⁴ node added.<br>
+		- P¹ add 2*3 upgrades.<br>
+		- P² added 2*3 upgrades.<br>
+		- P¹ added 3 duplicate purchases.<br>
+		- P3 added 2*3 upgrades.<br>
+		- P² added 3 duplicate purchases.<br>
+		- P⁴ node has added 1*3+2*2 upgrades.<br>
+		- P³ added 1 duplicate purchase item.<br>
+	<h3>v0.1.5</h3><br>
+		- Add P⁴ node 3*3 upgrade.<br>
+		- Optimize P⁴Points acquisition.<br>
+		- Add P⁴ node milestone.<br>
+		- Add P⁵ node 3*3 upgrade.<br>
+		- Add P⁶ node frame.<br>
+		- Add P¹ upgrade 4*1+1*4.<br>
 
 
 
@@ -50,7 +64,7 @@ function getPointGen() {
 	
 	
 	if(hasUpgrade("P1",11)) eff = eff.mul(2)
-	if(hasUpgrade("P1",12)) eff = eff.mul(player.P1.points.pow(0.5)+1)
+	if(hasUpgrade("P1",12)) eff = eff.mul((player.P1.points.pow(0.5).add(1)))
 	if(hasUpgrade("P1",13) && player.points == 0 ) eff = eff.mul(player.points.pow(0.25)+1)
 	if(hasUpgrade("P1",13) && player.points > 0 ) eff = eff.mul(player.points.pow(0.25))
 	if(hasUpgrade("P2",11)) eff = eff.mul(2)
@@ -61,6 +75,9 @@ function getPointGen() {
 	if(format(getBuyableAmount("P2",13)) > 0) eff = eff.mul(format(getBuyableAmount("P2",13))*0.9+1)
 	if(hasUpgrade("P4",11) && (eff > 1)) eff = eff.pow(2)
 	if(hasUpgrade("P4",11) && !(eff > 1)) eff = eff.mul(2)
+	if(hasUpgrade("P4",23)) eff = eff.mul(player.P4P.points.pow(0.2)+1)
+	if(hasUpgrade("P4",32)) eff = eff.pow(1.5)
+	if(hasUpgrade("P5",13)) eff = eff.pow(1.5)
 		
 	
 	
@@ -81,8 +98,8 @@ function addedPlayerData() { return {
 // Display extra things at the top of the page
 var displayThings = [
 		
-		function(){return"Current version endgame about"},
-		function(){return"v0.1"},
+		function(){return"Current version endgame about 1e85 points"},
+		//function(){return"v0.1"},
 		function(){return"author 陌尘(MoChen) QQ3168704134(2021.9.1 Back to school)"},
 
 		//function(){return"距离上次重置已过" + formatTime(player.timeSinceLastReset) + ""},
