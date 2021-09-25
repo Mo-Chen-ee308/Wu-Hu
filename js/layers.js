@@ -131,7 +131,7 @@ doReset(resettingLayer) {
 			canAfford() {return player.P2.points.gte(700)},
 			cost(){return new ExpantaNum(700)},
 			pay(){player.P2.points = player.P2.points.sub(700)},
-			unlocked(){return true},
+			unlocked(){return hasUpgrade("P5",32)},
 			currencyDisplayName:"P²"
         },
 		32: {
@@ -140,7 +140,7 @@ doReset(resettingLayer) {
 			canAfford() {return player.P3.points.gte(50)},
 			cost(){return new ExpantaNum(50)},
 			pay(){player.P3.points = player.P3.points.sub(50)},
-			unlocked(){return true},
+			unlocked(){return hasUpgrade("P5",32)},
 			currencyDisplayName:"P³"
         },
 		33: {
